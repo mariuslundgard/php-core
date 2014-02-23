@@ -1,6 +1,8 @@
 {
     "name": "mariuslundgard/php-core",
     "description": "PHP library for core management",
+    "keywords": ["php", "core"],
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
