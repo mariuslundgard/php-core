@@ -1,0 +1,27 @@
+{
+    "name": "mariuslundgard/php-core",
+    "description": "PHP library for core management",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marius Lundgård",
+            "email": "marius.lundgard@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Core": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.13",
+        "mariuslundgard/php-util": "dev-develop"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/mariuslundgard/php-util"
+        }
+    ]
+}
