@@ -143,15 +143,6 @@ class Process
         return false;
     }
 
-    public static function get()
-    {
-        if (! static::$root) {
-            static::$root = new static(getmypid());
-        }
-
-        return static::$root;
-    }
-
     public function on($type, $callback, $restartSyscalls = true)
     {
         if ( ! isset(static::$sigNum[$type])) {
@@ -207,4 +198,19 @@ class Process
 
         // }
     }
+
+    public function __toString()
+    {
+        return 'Process #'.$this->pid;
+    }
+
+    public static function getCurrent()
+    {
+        if (! static::$root) {
+            static::$root = new static(getmypid());
+        }
+
+        return static::$root;
+    }
+
 }

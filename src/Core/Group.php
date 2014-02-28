@@ -4,7 +4,7 @@ namespace Core;
 
 class Group
 {
-    protected $gid;
+    public $gid;
     protected $processes;
 
     public function __construct($gid)

@@ -18,12 +18,22 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.13",
-        "mariuslundgard/php-util": "dev-develop"
+        "mariuslundgard/php-util": "dev-develop",
+        "mariuslundgard/php-socket": "dev-develop",
+        "mariuslundgard/php-debug": "dev-develop"
     },
     "repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/mariuslundgard/php-util"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/mariuslundgard/php-socket"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/mariuslundgard/php-debug"
         }
     ]
 }
