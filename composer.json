@@ -1,6 +1,6 @@
 {
     "name": "mariuslundgard/php-core",
-    "description": "PHP library for core management",
+    "description": "A process management library for PHP 5.4+.",
     "keywords": ["php", "core"],
     "type": "library",
     "license": "MIT",
@@ -20,16 +20,32 @@
         "php": ">=5.4.13",
         "mariuslundgard/php-util": "dev-develop",
         "mariuslundgard/php-socket": "dev-develop",
+        "mariuslundgard/php-event": "dev-develop",
         "mariuslundgard/php-debug": "dev-develop"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "phploc/phploc": "*",
+        "mayflower/php-codebrowser": "~1.1",
+        "phpunit/php-invoker": "dev-master",
+        "pdepend/pdepend": "~2.0",
+        "phpmd/phpmd": "dev-master",
+        "sebastian/phpcpd": "~1.4",
+        "sebastian/finder-facade": "dev-master",
+        "theseer/fdomdocument": "dev-master",
+        "squizlabs/php_codesniffer": "~1.4",
+        "nette/nette": "~2.1.3",
+        "apigen/apigen": "~2.8",
+        "satooshi/php-coveralls": "dev-master"
     },
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/mariuslundgard/php-util"
+            "url": "https://github.com/mariuslundgard/php-socket"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/mariuslundgard/php-socket"
+            "url": "https://github.com/mariuslundgard/php-event"
         },
         {
             "type": "vcs",

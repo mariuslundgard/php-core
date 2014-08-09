@@ -4,7 +4,6 @@ namespace Core;
 
 use Exception;
 
-
 // Signal       Default Action                          Description
 // SIGABRT      A                                       Process abort signal
 // SIGALRM      T                                       Alarm clock
@@ -62,19 +61,23 @@ class Process
     public function __construct($pid = null)
     {
         $this->pid = $pid;
-
-        // echo 'PROCESS #' . $this->pid . PHP_EOL;
     }
 
     public function __get($property)
     {
         switch ($property) {
+
             case 'pid':
                 return $this->pid;
-            
+
             default:
                 return null;
         }
+    }
+
+    public function __toString()
+    {
+        return 'Process #'.$this->pid;
     }
 
     public function getGroups()
@@ -84,8 +87,6 @@ class Process
 
         foreach ($gids as $gid) {
             $ret[] = new Group($gid);
-            // $this->group = new Group($gid);
-            // $this->group->registerProcess($this);
         }
 
         return $ret;
@@ -120,23 +121,26 @@ class Process
     public function hangup()
     {
         $this->sendSignal('hangup');
+
         return $this;
     }
 
     public function shutdown()
     {
         $this->sendSignal('shutdown');
+
         return $this;
     }
 
     public function sendSignal($type)
     {
-        if ( ! isset(static::$sigNum[$type])) {
+        if (! isset(static::$sigNum[$type])) {
             throw new Exception('Cannot send: unknown signal type: ' . $type);
         }
 
         if (posix_kill($this->getPid(), static::$sigNum[$type])) {
             pcntl_signal_dispatch();
+
             return true;
         }
 
@@ -145,7 +149,7 @@ class Process
 
     public function on($type, $callback, $restartSyscalls = true)
     {
-        if ( ! isset(static::$sigNum[$type])) {
+        if (! isset(static::$sigNum[$type])) {
             throw new Exception('Cannot add signal listener: unknown signal type: ' . $type);
         }
 
@@ -153,19 +157,10 @@ class Process
             throw new Exception('Cannot add signal listener: the signal type is not supported: ' . $type);
         }
 
-        // print_r('SIGNAL TYPE: ' . static::$sigNum[$type] . PHP_EOL);
-
-        // $callback->bindTo($this);
-
         pcntl_signal(static::$sigNum[$type], $callback, $restartSyscalls);
 
         return $this;
     }
-
-    // public function addSignalHandler($signo, $handler, $restartSyscalls = true)
-    // {
-    //     
-    // }
 
     public function fork()
     {
@@ -175,9 +170,9 @@ class Process
         $this->pid = pcntl_fork();
 
         if ($pid == -1) {
-            throw new Exception('Could not fork'); 
-        } else if ($pid) {
-            exit(); // we are the parent 
+            throw new Exception('Could not fork');
+        } elseif ($pid) {
+            exit(); // we are the parent
         } else {
             // we are the child
         }
@@ -190,18 +185,6 @@ class Process
         // setup signal handlers
         pcntl_signal(SIGTERM, 'sig_handler');
         pcntl_signal(SIGHUP, 'sig_handler');
-
-        // loop forever performing tasks
-        // while (1) {
-
-        //     // do something interesting here
-
-        // }
-    }
-
-    public function __toString()
-    {
-        return 'Process #'.$this->pid;
     }
 
     public static function getCurrent()
@@ -212,5 +195,4 @@ class Process
 
         return static::$root;
     }
-
 }

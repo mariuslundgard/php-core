@@ -16,6 +16,7 @@ class Group
     public function registerProcess(Process $process)
     {
         $this->processes[$process->pid] = $process;
+
         return $this;
     }
 
