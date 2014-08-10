@@ -18,8 +18,6 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.13",
-        "mariuslundgard/php-util": "dev-develop",
-        "mariuslundgard/php-socket": "dev-develop",
         "mariuslundgard/php-event": "dev-develop",
         "mariuslundgard/php-debug": "dev-develop"
     },
@@ -39,14 +37,6 @@
         "satooshi/php-coveralls": "dev-master"
     },
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/mariuslundgard/php-socket"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/mariuslundgard/php-event"
-        },
         {
             "type": "package",
             "package": {
